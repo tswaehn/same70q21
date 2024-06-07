@@ -58,6 +58,15 @@ go to the project folder
 cd ~/src/my-zephyr-project
 ```
 
+modify CMakeLists.txt
+```
+    message("Preparing zephyr environment")
+    set(ENV{ZEPHYR_BASE} "$ENV{HOME}/.local/zephyrproject-3.6.0/zephyr/")
+    set(ENV{ZEPHYR_SDK_INSTALL_DIR} "$ENV{HOME}/.local/zephyr-sdk-0.16.5-1/")
+    execute_process(COMMAND cmake -P "$ENV{ZEPHYR_BASE}/share/zephyr-package/cmake/zephyr_export.cmake")
+    execute_process(COMMAND cmake -P "$ENV{ZEPHYR_BASE}/share/zephyrunittest-package/cmake/zephyr_export.cmake")
+```
+
 compare the CMakeLists.txt folder settings for
 * `ZEPHYR_BASE`
 * `ZEPHYR_SDK_INSTALL_DIR`
